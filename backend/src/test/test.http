@@ -1,0 +1,9 @@
+POST http://localhost:8081/api/activity
+Content-Type: application/json
+
+{
+  "steps": 10000,
+  "distance": 7.5,
+  "date": "2025-07-01",
+  "caloriesBurned": 500
+}
