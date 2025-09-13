@@ -1,0 +1,117 @@
+<div>
+
+    <div nz-row>
+        <h1 nz-card-grid [ngStyle]="gridStyle">Goal</h1>
+    </div>
+
+    <div nz-row>
+        <div nz-col nzFlex="2">
+            <nz-card nzType="inner" style="margin-top: 16px;" nzTitle="Post New Goal">
+                <form nz-form [formGroup]="goalForm" (ngSubmit)="submitForm()" class="custom-form" >
+                    <nz-form-item>
+                        <nz-form-control>
+                            <textarea nz-input placeholder="Enter description" formControlName="description" [nzAutosize]="{ minRows: 2, maxRows: 6}"></textarea>    
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Please input the start date!">
+                            <nz-date-picker style="width: 100%;" formControlName="startDate" nzPlaceHolder="Select Start Date"></nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Please input the end date!">
+                            <nz-date-picker style="width: 100%;" formControlName="endDate" nzPlaceHolder="Select End Date"></nz-date-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+
+
+                    <button nz-button nzType="primary" nzBlock class="w-100" [disabled]="goalForm.invalid">
+                        Post Goal
+                    </button>
+                </form>
+            </nz-card>
+        </div>
+        <div nz-col nzFlex="3" style="margin-left: 20px;">
+            <nz-card nzType="inner" style="margin-top: 16px;" nzTitle="Past Goals">
+                <!-- Scrollable container -->
+                <div style="max-height: 300px; overflow-y: auto;">
+                    <div nz-card-grid style="width: 100%;" *ngFor="let goal of goals">
+                        <div nz-col nzSpan="30" style="margin-bottom: 10px;">
+                        Description: <strong>{{goal.description}}</strong>
+                        -
+                        Start Date: <strong>{{goal.startDate | date:'MMM d, y'}}</strong>
+                        -
+                        End Date: <strong>{{goal.endDate | date:'MMM d, y'}}</strong>
+                        -
+                        Achieved: <strong>{{goal.achieved}}</strong>
+
+                        <span *ngIf="!goal.achieved" 
+                                (click)="updateStatus(goal.id)" 
+                                nz-icon 
+                                [nzType]="'check-circle'" 
+                                [nzTheme]="'twotone'" 
+                                [nzTwotoneColor]="'#52c41a'" 
+                                style="margin-left: 15px; cursor: pointer;">
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </nz-card>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
